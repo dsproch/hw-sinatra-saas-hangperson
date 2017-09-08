@@ -45,10 +45,8 @@ class HangpersonApp < Sinatra::Base
       flash[:message] = "Invalid guess."
     elsif not @game.guess(letter)
       flash[:message] = "You have already used that letter."
-    else
-      #Valid letter and guess
-      redirect '/show'
     end
+    redirect '/show'
   end
   
   # Everytime a guess is made, we should eventually end up at this route.
