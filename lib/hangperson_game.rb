@@ -60,12 +60,16 @@ class HangpersonGame
   end
 
   def word_with_guesses
+    
+    if @guesses.empty?
+      # puts "-----------------------------------------------"
+      # puts @word.gsub(/./, '-')
+      # puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      return @word.gsub(/./, '-')
+    end
     # puts "-----------------------------------------------"
     # puts @word.gsub(/[^#{@guesses}]/, '-')
     # puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-    if @guesses.empty?
-      return @word.gsub(/./, '-')
-    end
     return @word.gsub(/[^#{@guesses}]/, '-')
   end
 
