@@ -47,14 +47,7 @@ class HangpersonApp < Sinatra::Base
       flash[:message] = "You have already used that letter."
     else
       #Valid letter and guess
-      curr_state = @game.check_win_or_lose
-      if curr_state == :win
-        redirect '/win'
-      elsif curr_state == :lose
-        redirect '/lose'
-      else
-        redirect '/show'
-      end
+      redirect '/show'
     end
   end
   
@@ -65,17 +58,39 @@ class HangpersonApp < Sinatra::Base
   # wrong_guesses and word_with_guesses from @game.
   get '/show' do
     ### YOUR CODE HERE ###
-    erb :show # You may change/remove this line
+    curr_state = @game.check_win_or_lose
+    if curr_state == :win
+      redirect '/win'
+    elsif curr_state == :lose
+      redirect '/lose'
+    else
+      erb :show # You may change/remove this line
+    end
   end
   
   get '/win' do
     ### YOUR CODE HERE ###
-    erb :win # You may change/remove this line
+    curr_state = @game.check_win_or_lose
+    if curr_state == :win
+      erb :win # You may change/remove this line
+    elsif curr_state == :lose
+      redirect '/lose'
+    else
+      redirect '/show'
+    end
   end
   
   get '/lose' do
     ### YOUR CODE HERE ###
-    erb :lose # You may change/remove this line
+    curr_state = @game.check_win_or_lose
+    if curr_state == :win
+      redirect '/win'
+    elsif curr_state == :lose
+      erb :lose # You may change/remove this line
+    else
+      redirect '/show'
+    end
+    
   end
   
 end
