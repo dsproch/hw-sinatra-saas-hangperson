@@ -55,6 +55,7 @@ class HangpersonApp < Sinatra::Base
       else
         redirect '/show'
       end
+    end
   end
   
   # Everytime a guess is made, we should eventually end up at this route.
